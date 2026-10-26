@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Luciano Rinaldi · Psicoanálisis Vincular Relacional</title>
+    <meta
+      name="description"
+      content="Terapia online de psicoanálisis vincular y relacional. Un espacio seguro, en tu idioma, pensado para la comunidad latina que vive en el exterior."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <!-- ===================== HEADER / NAV ===================== -->
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="logo" aria-label="Luciano Rinaldi — inicio">
+          <img src="assets/logo-lr.svg" alt="LR" class="logo-mark" />
+        </a>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-expanded="false"
+          aria-controls="navPanel"
+          aria-label="Abrir menú"
+        >
+          <span></span><span></span>
+        </button>
+
+        <nav class="nav-panel" id="navPanel" aria-label="Navegación principal">
+          <p class="nav-panel__accent">Menú</p>
+          <ul>
+            <li><a href="#sobre-mi" data-nav>Sobre mí</a></li>
+            <li><a href="#psicoanalisis" data-nav>Psicoanálisis</a></li>
+            <li><a href="#atencion" data-nav>Terapia</a></li>
+            <li><a href="#confianza" data-nav>Conexión online</a></li>
+            <li><a href="#identificado" data-nav>Psicodiagnóstico</a></li>
+            <li><a href="#contacto" data-nav>Contacto</a></li>
+          </ul>
+          <a href="#contacto" data-nav class="btn btn--primary nav-panel__cta"
+            >Reserva tu sesión</a
+          >
+        </nav>
+      </div>
+    </header>
+    <div class="nav-overlay" id="navOverlay" hidden></div>
+
+    <main>
+      <!-- ===================== HERO ===================== -->
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="script-accent">Bienvenido/a</p>
+          <p class="eyebrow">Terapia online</p>
+          <h1 class="hero-title">
+            Tu espacio de salud mental,<br />
+            hablado en tu idioma y<br />
+            conectado con tu historia.
+          </h1>
+          <p class="hero-meta">
+            Psicoanálisis <span>|</span> Vincular <span>|</span> Relacional
+          </p>
+          <p class="hero-sub">
+            Un acompañamiento relacional y vincular diseñado para personas que
+            buscan procesar el estrés, fortalecer sus vínculos y adaptarse a su
+            presente para disfrutarlo a pleno.
+          </p>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn btn--primary">Reserva tu sesión online</a>
+            <a href="#video" class="btn btn--ghost">Conóceme en 45 segundos</a>
+          </div>
+        </div>
+
+        <div class="hero-figure">
+          <!-- PLACEHOLDER (imagen de stock, Pexels): reemplazar por foto de Luciano sonriendo en naturaleza -->
+          <figure class="media-frame media-frame--wide">
+            <img src="assets/hero-ambiente.jpg" alt="" class="img-cover" loading="lazy" />
+          </figure>
+          <p class="hero-figure__quote">
+            Hay vínculos que hieren y lastiman;<br />y hay vínculos que sanan.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== MICRO-VIDEO ===================== -->
+      <section class="video-section section--cream">
+        <div class="container">
+          <div class="sec-head sec-head--center">
+            <p class="eyebrow">Te doy la bienvenida</p>
+            <h2 class="sec-title">Un mensaje para vos, en tu idioma</h2>
+          </div>
+          <div class="video-card">
+            <!-- PLACEHOLDER (imagen de stock, Pexels): reemplazar por el micro-video de bienvenida (30-45s) -->
+            <div class="video-placeholder" role="img" aria-label="Micro-video de bienvenida">
+              <img src="assets/espacio-interior.jpg" alt="" class="video-placeholder__bg" loading="lazy" />
+              <button class="play-btn" aria-label="Reproducir video">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+              </button>
+              <span class="video-placeholder__note">Micro-video de bienvenida · 30–45 s</span>
+            </div>
+            <blockquote class="video-transcript">
+              “Hola, soy Luciano Rinaldi y sé muy bien lo que significa construir un
+              proyecto de vida en el exterior, aprovechar las oportunidades, pero
+              también enfrentar la distancia, las exigencias del entorno y la
+              reconfiguración de nuestros vínculos. Como psicólogo especializado en
+              psicoanálisis vincular y relacional, ofrezco un espacio seguro y en tu
+              propio idioma para pensar tu bienestar, sanar dinámicas familiares o de
+              pareja y reencontrar tu centro.”
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ¿TE SENTÍS IDENTIFICADO? ===================== -->
+      <section class="identificado" id="identificado">
+        <div class="container">
+          <div class="sec-head sec-head--left">
+            <span class="sec-num">01</span>
+            <h2 class="sec-title sec-title--rule">¿Te sientes identificado?</h2>
+          </div>
+          <p class="section-lead">
+            A veces el malestar no se expresa como un “trastorno”, sino como una
+            tensión en la vida cotidiana y en los vínculos. Reconocerlo es el primer
+            paso.
+          </p>
+
+          <ul class="situaciones">
+            <li class="situacion">
+              <span class="situacion__num">01</span>
+              <div>
+                <h3>Me pesa la distancia y el desarraigo</h3>
+                <p>
+                  La culpa o nostalgia por la familia que quedó en el país de origen,
+                  o la sensación de no pertenecer del todo a ningún lugar.
+                </p>
+              </div>
+            </li>
+            <li class="situacion">
+              <span class="situacion__num">02</span>
+              <div>
+                <h3>Demasiada exigencia (burnout) en mi trabajo</h3>
+                <p>
+                  La presión por sostener el éxito profesional y económico en un
+                  entorno hipercompetitivo, donde el ritmo de vida no te deja pensar.
+                </p>
+              </div>
+            </li>
+            <li class="situacion">
+              <span class="situacion__num">03</span>
+              <div>
+                <h3>Necesito reconfigurar mi pareja o familia</h3>
+                <p>
+                  Desafíos en la crianza de hijos que crecen en una cultura distinta a
+                  la tuya, o conflictos de pareja que se repiten.
+                </p>
+              </div>
+            </li>
+            <li class="situacion">
+              <span class="situacion__num">04</span>
+              <div>
+                <h3>Repito patrones relacionales</h3>
+                <p>
+                  La dificultad para establecer vínculos sanos en las relaciones
+                  personales y laborales sin sentir culpa.
+                </p>
+              </div>
+            </li>
+            <li class="situacion">
+              <span class="situacion__num">05</span>
+              <div>
+                <h3>Tengo duelos no resueltos</h3>
+                <p>
+                  Pérdidas, despedidas y cambios que no terminaron de elaborarse y que
+                  siguen pesando en el presente.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===================== CITA / ENFOQUE ===================== -->
+      <section class="quote-band section--cream">
+        <div class="container">
+          <blockquote class="pull-quote">
+            Desde el psicoanálisis vincular y relacional entendemos que no sufrimos
+            solos: nuestra mente se construye a partir del vínculo con las personas
+            significativas. Estoy para escucharte, entenderte y acompañarte.
+          </blockquote>
+          <p class="pull-quote__sign">Luciano Rinaldi</p>
+        </div>
+      </section>
+
+      <!-- ===================== SOBRE MÍ ===================== -->
+      <section class="sobre-mi" id="sobre-mi">
+        <div class="container">
+          <div class="sec-head sec-head--left">
+            <span class="sec-num">02</span>
+            <h2 class="sec-title sec-title--rule">Sobre mí</h2>
+          </div>
+
+          <div class="sobre-mi__grid">
+            <div class="sobre-mi__media">
+              <!-- PLACEHOLDER (imagen de stock, Pexels): reemplazar por foto real de Luciano -->
+              <figure class="media-frame media-frame--portrait">
+                <img src="assets/luciano-portrait.jpg" alt="Retrato de Luciano Rinaldi" class="img-cover" loading="lazy" />
+              </figure>
+            </div>
+            <div class="sobre-mi__body">
+              <p class="script-accent script-accent--left">Un puente bicultural</p>
+              <p class="lead-serif">
+                Entre tu historia y tu presente, entre dos culturas que conocés de
+                adentro.
+              </p>
+              <p>
+                Haber vivido 10 años en el exterior (Brasil, Estados Unidos, Italia y
+                España) me permitió experimentar las exigencias y desafíos emocionales
+                de desarrollarme en una cultura distinta. Comprendo los desafíos de
+                vivir en otro país, la importancia de expresar tus emociones en tu
+                propia lengua, y la necesidad de contar con un profesional que entienda
+                tu trasfondo cultural sin que tengas que explicárselo desde cero.
+              </p>
+            </div>
+          </div>
+
+          <div class="formacion">
+            <article class="formacion__item">
+              <div class="formacion__logo" aria-hidden="true"><span>UNSL</span></div>
+              <h3>Psicología</h3>
+              <p class="formacion__tipo">Carrera de grado</p>
+              <p class="formacion__inst">Universidad Nacional de San Luis · Argentina</p>
+            </article>
+            <article class="formacion__item">
+              <div class="formacion__logo" aria-hidden="true"><span>URA</span></div>
+              <h3>Filosofía</h3>
+              <p class="formacion__tipo">Carrera de pregrado</p>
+              <p class="formacion__inst">Università Regina Apostolorum · Roma, Italia</p>
+            </article>
+            <article class="formacion__item">
+              <div class="formacion__logo" aria-hidden="true"><span>LCH</span></div>
+              <h3>Humanidades Clásicas</h3>
+              <p class="formacion__tipo">Carrera de pregrado</p>
+              <p class="formacion__inst">Legion of Christ College of Humanities · CT, USA</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PSICOANÁLISIS VINCULAR ===================== -->
+      <section class="psicoanalisis section--cream" id="psicoanalisis">
+        <div class="container">
+          <div class="sec-head sec-head--center">
+            <span class="sec-num">03</span>
+            <p class="script-accent">El enfoque</p>
+            <h2 class="sec-title">Psicoanálisis Vincular-Relacional</h2>
+            <p class="section-lead section-lead--center">
+              Un enfoque centrado en tus vínculos y en tu forma de habitar el mundo.
+            </p>
+          </div>
+
+          <div class="concept-grid">
+            <article class="concept">
+              <h3>La mente es relacional</h3>
+              <p>
+                Para el psicoanálisis vincular relacional, la mente es un producto
+                relacional, resultado de vínculos significativos: somos habitados por
+                otros. No sufrimos solos.
+              </p>
+            </article>
+            <article class="concept">
+              <h3>La salud mental, como un diamante</h3>
+              <p>
+                Entiendo la salud mental con la analogía del diamante y sus
+                atravesamientos: historia familiar, cultura, educación, trabajo,
+                amigos, pareja, mandatos y espiritualidad. Cada cara le da forma a
+                quién sos.
+              </p>
+            </article>
+            <article class="concept">
+              <h3>No busco encasillarte</h3>
+              <p>
+                En vez de un diagnóstico que te etiquete, abrimos un espacio de
+                pensamiento para comprender por qué duele lo que duele hoy y qué
+                patrones estás repitiendo en tus relaciones.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CÓMO ES LA ATENCIÓN ===================== -->
+      <section class="atencion" id="atencion">
+        <div class="container">
+          <div class="sec-head sec-head--left">
+            <span class="sec-num">04</span>
+            <h2 class="sec-title sec-title--rule">Cómo es la atención</h2>
+          </div>
+
+          <div class="etapas">
+            <article class="etapa">
+              <p class="etapa__kicker">Primera etapa</p>
+              <h3>Etapa diagnóstica</h3>
+              <p class="etapa__desc">Un primer tramo para conocernos y entender tu historia.</p>
+              <ul>
+                <li>Conocerte y escuchar tu historia</li>
+                <li>Preguntas que abren pensamiento</li>
+                <li>Psicodiagnóstico</li>
+                <li>Devolución</li>
+              </ul>
+            </article>
+            <article class="etapa">
+              <p class="etapa__kicker">Segunda etapa</p>
+              <h3>Etapa terapéutica</h3>
+              <p class="etapa__desc">El trabajo sostenido hacia los cambios que buscás.</p>
+              <ul>
+                <li>Definición de objetivos</li>
+                <li>Intervenciones clínicas</li>
+                <li>Sesiones virtuales semanales</li>
+                <li>Seguimiento del proceso</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CONFIANZA / CONEXIÓN ONLINE ===================== -->
+      <section class="confianza section--cream" id="confianza">
+        <div class="container">
+          <div class="sec-head sec-head--left">
+            <span class="sec-num">05</span>
+            <h2 class="sec-title sec-title--rule">Conexión online</h2>
+          </div>
+
+          <div class="trust-grid">
+            <div class="trust">
+              <h3>Flexibilidad horaria</h3>
+              <p>
+                El encuadre online se adapta a tus horarios: podés coordinar antes o
+                después de tu jornada laboral, sin importar la diferencia horaria.
+              </p>
+            </div>
+            <div class="trust">
+              <h3>Confidencialidad y rigor</h3>
+              <p>
+                Mi espacio cumple con estrictos estándares de privacidad ética y
+                secreto profesional.
+              </p>
+            </div>
+            <div class="trust">
+              <h3>Plataforma segura</h3>
+              <p>
+                Trabajamos con una plataforma confiable y profesional: Google Meet.
+              </p>
+            </div>
+          </div>
+
+          <div class="pasos">
+            <p class="script-accent">Paso a paso</p>
+            <ol class="pasos__list">
+              <li>
+                <span class="pasos__step">01</span>
+                <h3>Primer contacto</h3>
+                <p>
+                  Me escribís por WhatsApp o completás el formulario (nombre, WhatsApp
+                  y una breve descripción de lo que buscás).
+                </p>
+              </li>
+              <li>
+                <span class="pasos__step">02</span>
+                <h3>Entrevista inicial</h3>
+                <p>
+                  Una conversación breve para conocernos y definir el encuadre.
+                </p>
+              </li>
+              <li>
+                <span class="pasos__step">03</span>
+                <h3>Inicio del proceso</h3>
+                <p>
+                  Sesiones virtuales semanales a través de una plataforma segura.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CONTACTO ===================== -->
+      <section class="contacto" id="contacto">
+        <div class="container">
+          <div class="sec-head sec-head--center">
+            <span class="sec-num">06</span>
+            <p class="script-accent">Hablemos</p>
+            <h2 class="sec-title">Reserva tu sesión inicial</h2>
+            <p class="section-lead section-lead--center">
+              Dejame tus datos y una breve descripción de lo que buscás. Te respondo
+              personalmente para coordinar una primera conversación.
+            </p>
+          </div>
+
+          <div class="contacto-inner">
+            <div class="contacto-aside">
+              <a
+                class="whatsapp-link"
+                id="whatsappLink"
+                href="https://wa.me/0000000000?text=Hola%20Luciano%2C%20quiero%20reservar%20una%20sesi%C3%B3n"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3-.8-2.6-1.1-4.2-3.8-4.3-4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5c-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.4.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+                Escribir por WhatsApp
+              </a>
+              <p class="contacto-aside__note">
+                Terapia online a través de Google Meet. Respondo cada consulta de forma
+                personal y confidencial.
+              </p>
+            </div>
+
+            <form class="form" id="contactForm" novalidate>
+              <div class="form__row">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required maxlength="120" autocomplete="name" />
+              </div>
+              <div class="form__row">
+                <label for="whatsapp">WhatsApp</label>
+                <input type="text" id="whatsapp" name="whatsapp" required maxlength="40" inputmode="tel" placeholder="+1 ..." />
+              </div>
+              <div class="form__row">
+                <label for="mensaje">¿Qué estás buscando?</label>
+                <textarea id="mensaje" name="mensaje" required maxlength="2000" rows="4"></textarea>
+              </div>
+              <div class="form__hp" aria-hidden="true">
+                <label for="website">No completar</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+              <button type="submit" class="btn btn--primary form__submit" id="submitBtn">
+                Enviar consulta
+              </button>
+              <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer section--cream">
+      <div class="container footer-inner">
+        <p class="script-accent footer-accent">Luciano Rinaldi</p>
+        <p class="footer-tagline">Psicoanálisis Vincular Relacional · Terapia online</p>
+        <nav class="footer-nav" aria-label="Pie de página">
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#psicoanalisis">Psicoanálisis</a>
+          <a href="#atencion">Terapia</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <p class="footer-legal">
+          © <span id="year"></span> Luciano Rinaldi. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
