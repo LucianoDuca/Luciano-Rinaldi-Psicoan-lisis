@@ -504,6 +504,47 @@
       </div>
     </footer>
 
+    <!-- ===================== TEMPORAL · SWITCHER DE COLORES =====================
+         Previsualización de paletas. ELIMINAR este bloque (y el CSS marcado
+         "TEMPORAL" en styles.css) cuando se defina la paleta definitiva. -->
+    <div class="theme-switcher" id="themeSwitcher" aria-label="Previsualizar colores">
+      <span class="theme-switcher__label">Colores (demo)</span>
+      <div class="theme-switcher__row">
+        <button type="button" data-set-theme="madera">
+          <span class="sw-dot" style="background:#6b4f36"></span>Madera
+        </button>
+        <button type="button" data-set-theme="gris">
+          <span class="sw-dot" style="background:#8a9199"></span>Gris
+        </button>
+        <button type="button" data-set-theme="blanco">
+          <span class="sw-dot" style="background:#ffffff"></span>Blanco
+        </button>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var KEY = "lr-theme-preview";
+        var root = document.documentElement;
+        var sw = document.getElementById("themeSwitcher");
+        function apply(t) {
+          if (t) root.setAttribute("data-theme", t);
+          else root.removeAttribute("data-theme");
+          sw.querySelectorAll("[data-set-theme]").forEach(function (b) {
+            b.classList.toggle("active", b.getAttribute("data-set-theme") === t);
+          });
+        }
+        try { apply(localStorage.getItem(KEY)); } catch (e) {}
+        sw.addEventListener("click", function (e) {
+          var b = e.target.closest("[data-set-theme]");
+          if (!b) return;
+          var t = b.getAttribute("data-set-theme");
+          apply(t);
+          try { localStorage.setItem(KEY, t); } catch (e) {}
+        });
+      })();
+    </script>
+    <!-- ===================== FIN TEMPORAL ===================== -->
+
     <script src="script.js"></script>
   </body>
 </html>

@@ -986,3 +986,94 @@ section {
     transition: none;
   }
 }
+
+/* ===================== TEMPORAL · PALETAS DE PRUEBA =====================
+   Variantes de color para previsualizar (madera / gris / blanco).
+   La paleta por defecto (sin data-theme) es la actual cálida/crema.
+   ELIMINAR este bloque + el switcher del HTML al definir la paleta final. */
+:root[data-theme="madera"] {
+  --blanco: #ffffff;
+  --crema: #f4ece0;
+  --crema-2: #e9dcc8;
+  --peach: #f6ece1;
+  --tinta: #3a2d22;
+  --tinta-80: #5c4a39;
+  --tinta-suave: #8c7a66;
+  --linea: #e2d5c1;
+  --linea-fuerte: #cdbda0;
+}
+:root[data-theme="gris"] {
+  --blanco: #ffffff;
+  --crema: #f3f4f5;
+  --crema-2: #e7e9eb;
+  --peach: #f2f3f4;
+  --tinta: #272a2e;
+  --tinta-80: #484d53;
+  --tinta-suave: #7b8188;
+  --linea: #e4e6e9;
+  --linea-fuerte: #ced2d7;
+}
+:root[data-theme="blanco"] {
+  --blanco: #ffffff;
+  --crema: #fafafa;
+  --crema-2: #f1f1f1;
+  --peach: #fbfbfb;
+  --tinta: #1e1e1e;
+  --tinta-80: #454545;
+  --tinta-suave: #787878;
+  --linea: #ededed;
+  --linea-fuerte: #dcdcdc;
+}
+
+/* Switcher flotante (temporal) */
+.theme-switcher {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 11px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #d8cdbd;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
+  font-family: var(--sans);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+.theme-switcher__label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #7d746a;
+  text-align: center;
+}
+.theme-switcher__row {
+  display: flex;
+  gap: 6px;
+}
+.theme-switcher button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #d2cabd;
+  background: #fff;
+  color: #2b2622;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+}
+.theme-switcher button.active {
+  outline: 2px solid #2b2622;
+  outline-offset: 1px;
+}
+.theme-switcher .sw-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
