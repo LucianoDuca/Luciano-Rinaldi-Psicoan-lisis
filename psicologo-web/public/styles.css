@@ -638,6 +638,17 @@ section {
 .concept p {
   margin: 0;
 }
+.vincular-illustration {
+  max-width: 400px;
+  margin: 0 auto clamp(2rem, 5vw, 3.5rem);
+}
+.vincular-illustration img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* La ilustración tiene fondo blanco: multiply lo funde en el crema de la sección */
+  mix-blend-mode: multiply;
+}
 
 /* ===================== ATENCIÓN / ETAPAS ===================== */
 .etapas {
