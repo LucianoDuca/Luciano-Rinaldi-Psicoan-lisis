@@ -521,10 +521,10 @@ section {
 }
 .situacion {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.3rem;
   padding: 2rem 0;
   border-top: 1px solid var(--linea);
-  align-items: baseline;
+  align-items: flex-start;
 }
 .situacion:last-child {
   border-bottom: 1px solid var(--linea);
@@ -534,6 +534,16 @@ section {
   font-size: 1.4rem;
   color: var(--tinta-suave);
   min-width: 2.5rem;
+}
+.situacion__icon {
+  flex: none;
+  color: var(--tinta);
+  display: inline-flex;
+  margin-top: 0.15rem;
+}
+.situacion__icon svg {
+  width: 30px;
+  height: 30px;
 }
 .situacion h3 {
   font-size: 1.5rem;
@@ -648,22 +658,19 @@ section {
   text-align: center;
   padding: 0 0.5rem;
 }
+.concept__icon {
+  display: inline-flex;
+  color: var(--tinta);
+  margin-bottom: 0.9rem;
+}
+.concept__icon svg {
+  width: 38px;
+  height: 38px;
+}
 .concept h3 {
   font-size: 1.55rem;
   font-weight: 400;
   margin-bottom: 0.8rem;
-  position: relative;
-  padding-top: 1.6rem;
-}
-.concept h3::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 34px;
-  height: 1px;
-  background: var(--linea-fuerte);
 }
 .concept p {
   margin: 0;
