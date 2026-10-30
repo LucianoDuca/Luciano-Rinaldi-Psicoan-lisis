@@ -366,7 +366,11 @@ section {
 }
 .hero-figure__name {
   text-align: center;
-  margin: 0 0 1.4rem;
+  margin: 0 0 0.35rem;
+}
+.hero-figure__cred {
+  text-align: center;
+  margin: 0 0 1.5rem;
 }
 .hero-figure__quote {
   font-family: var(--serif);
