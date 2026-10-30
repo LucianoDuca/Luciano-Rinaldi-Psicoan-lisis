@@ -355,6 +355,19 @@ section {
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
+.hero-figure__intro {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2.9vw, 1.9rem);
+  text-align: center;
+  color: var(--tinta);
+  margin: 0 auto 0.2rem;
+  max-width: 40rem;
+}
+.hero-figure__name {
+  text-align: center;
+  margin: 0 0 1.4rem;
+}
 .hero-figure__quote {
   font-family: var(--serif);
   font-style: italic;
@@ -607,6 +620,19 @@ section {
   font-size: 0.95rem;
   margin: 0;
 }
+.formacion__lugar {
+  display: block;
+  color: var(--tinta-suave);
+  font-size: 0.84rem;
+  margin-top: 0.15rem;
+}
+.formacion__titulo {
+  text-align: center;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  margin: clamp(2.6rem, 6vw, 4rem) 0 1.8rem;
+}
 
 /* ===================== PSICOANÁLISIS ===================== */
 .concept-grid {
@@ -752,6 +778,21 @@ section {
 .pasos__list p {
   margin: 0;
   font-size: 0.98rem;
+}
+.honorarios {
+  text-align: center;
+  margin-top: clamp(3rem, 7vw, 5rem);
+  padding-top: clamp(2.5rem, 6vw, 3.5rem);
+  border-top: 1px solid var(--linea);
+}
+.honorarios h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.honorarios p {
+  margin: 0 auto;
+  max-width: 60ch;
 }
 
 /* ===================== CONTACTO ===================== */
