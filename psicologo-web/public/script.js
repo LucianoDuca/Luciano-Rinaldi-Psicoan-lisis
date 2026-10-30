@@ -1,7 +1,7 @@
 // ===================== CONFIG =====================
-// Reemplazá por el número real de Luciano (formato internacional, sin "+", sin espacios).
-// Ej: 13055551234 para un número de Florida (+1 305 555 1234).
-const WHATSAPP_NUMBER = "0000000000";
+// Número de Luciano en formato internacional, sin "+", sin espacios.
+// +54 9 2664 745666 (Argentina, San Luis) → 5492664745666
+const WHATSAPP_NUMBER = "5492664745666";
 const WHATSAPP_MSG = "Hola Luciano, quiero reservar una sesión";
 
 // ===================== NAV PANEL =====================
@@ -98,12 +98,12 @@ if (form) {
       } else {
         status.className = "form__status error";
         status.textContent =
-          json.error || "No se pudo enviar. Probá de nuevo o escribí por WhatsApp.";
+          json.error || "No se pudo enviar. Prueba de nuevo o escribe por WhatsApp.";
       }
     } catch (err) {
       status.className = "form__status error";
       status.textContent =
-        "Hubo un problema de conexión. Probá de nuevo o escribí por WhatsApp.";
+        "Hubo un problema de conexión. Prueba de nuevo o escribe por WhatsApp.";
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = originalText;
