@@ -434,6 +434,8 @@ section {
 
 /* ===================== VIDEO ===================== */
 .video-card {
+  max-width: 880px;
+  margin: 0 auto;
   display: grid;
   gap: clamp(2rem, 5vw, 3.5rem);
   align-items: center;
@@ -677,7 +679,7 @@ section {
   margin: 0;
 }
 .vincular-illustration {
-  max-width: 400px;
+  max-width: 780px;
   margin: 0 auto clamp(2rem, 5vw, 3.5rem);
 }
 .vincular-illustration img {
@@ -763,6 +765,28 @@ section {
 .trust p {
   margin: 0;
   max-width: 60ch;
+}
+/* Logos de marca (Google Meet, ARQ) en tono madera, no en su color original */
+.trust__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+  color: var(--tinta-suave);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.trust__brand--center {
+  display: flex;
+  justify-content: center;
+}
+.brand-logo {
+  width: 2.1rem;
+  height: auto;
+  flex: none;
 }
 .pasos {
   text-align: center;
@@ -912,9 +936,45 @@ section {
   border-top: 1px solid var(--linea);
   text-align: center;
 }
-.footer-accent {
-  font-size: clamp(2.6rem, 6vw, 3.4rem);
-  margin-bottom: 0.4rem;
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.6rem);
+  margin: 0 auto 2.4rem;
+  text-align: left;
+}
+.footer-brand__mark {
+  width: clamp(60px, 12vw, 84px);
+  height: auto;
+  opacity: 0.75;
+  /* El PNG es negro: lo llevamos al tono madera de la paleta */
+  filter: sepia(0.6) saturate(0.9) brightness(1.15);
+}
+.footer-brand__rule {
+  align-self: stretch;
+  width: 2px;
+  background: var(--tinta-suave);
+  opacity: 0.6;
+}
+.footer-brand__text p {
+  margin: 0;
+}
+.footer-brand__name {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 4.6vw, 2rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-80) !important;
+  line-height: 1.2;
+}
+.footer-brand__cred {
+  margin-top: 0.6rem !important;
+  font-family: var(--sans);
+  font-size: clamp(0.66rem, 2.2vw, 0.8rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tinta-suave) !important;
 }
 .footer-tagline {
   font-family: var(--sans);
@@ -966,9 +1026,6 @@ section {
 }
 
 @media (min-width: 900px) {
-  .video-card {
-    grid-template-columns: 1.15fr 1fr;
-  }
   .sobre-mi__grid {
     grid-template-columns: 0.85fr 1.15fr;
   }
