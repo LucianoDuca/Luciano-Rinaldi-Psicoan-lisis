@@ -5,6 +5,7 @@
       "name": "landing",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["start"],
+      "cwd": "psicologo-web",
       "port": 3000
     }
   ]

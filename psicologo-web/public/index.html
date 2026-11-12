@@ -17,7 +17,18 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   </head>
-  <body>
+  <body class="is-loading">
+    <!-- ===================== PRELOADER ===================== -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+      <div class="preloader__inner">
+        <img src="assets/logo-wings.png" alt="" class="preloader__logo" />
+        <p class="preloader__name">Luciano Rinaldi</p>
+        <p class="preloader__tag">Psicoanálisis · Vincular · Relacional</p>
+        <span class="preloader__bar"><span></span></span>
+      </div>
+    </div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
     <!-- ===================== HEADER / NAV ===================== -->
     <header class="site-header" id="top">
       <div class="container header-inner">
@@ -84,9 +95,8 @@
           <p class="hero-figure__cred eyebrow">
             Lic. en Psicología · MP 1483 · Infancias, adolescencias y adultos
           </p>
-          <!-- Foto real del consultorio de Luciano (placeholder hasta la foto de Luciano en naturaleza) -->
-          <figure class="media-frame media-frame--wide">
-            <img src="assets/consultorio-2.jpg" alt="Consultorio de Luciano Rinaldi: escritorio de madera, sillones y un ambiente cálido" class="img-cover" loading="lazy" />
+          <figure class="media-frame media-frame--wide hero-photo">
+            <img src="assets/luciano-6.jpg" alt="Luciano Rinaldi sentado en su escritorio, en un consultorio luminoso y cálido" class="img-cover" style="object-position: 50% 62%" data-parallax="0.08" />
           </figure>
           <p class="hero-figure__quote">
             Hay vínculos que hieren y lastiman;<br />y hay vínculos que sanan.
@@ -95,20 +105,28 @@
       </section>
 
       <!-- ===================== MICRO-VIDEO ===================== -->
-      <section class="video-section section--cream">
+      <section class="video-section section--cream" id="video">
         <div class="container">
           <div class="sec-head sec-head--center">
             <p class="eyebrow">Te doy la bienvenida</p>
             <h2 class="sec-title">Un mensaje para ti, en tu idioma</h2>
           </div>
           <div class="video-card">
-            <!-- Foto real del consultorio como fondo (hasta tener el micro-video de bienvenida de 30-45 s) -->
-            <div class="video-placeholder" role="img" aria-label="Micro-video de bienvenida">
-              <img src="assets/consultorio-1.jpg" alt="" class="video-placeholder__bg" loading="lazy" />
-              <button class="play-btn" aria-label="Reproducir video">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+            <div class="video-player" id="videoPlayer" data-reveal="img">
+              <video
+                id="welcomeVideo"
+                class="video-player__media"
+                src="assets/video-bienvenida.mp4"
+                poster="assets/video-poster.jpg"
+                preload="metadata"
+                playsinline
+              ></video>
+              <button class="video-player__cover" id="videoPlay" aria-label="Reproducir video de bienvenida">
+                <span class="play-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                </span>
+                <span class="video-player__note">Mensaje de bienvenida · 40 s</span>
               </button>
-              <span class="video-placeholder__note">Micro-video de bienvenida · 30–45 s</span>
             </div>
             <blockquote class="video-transcript">
               “Hola, soy Luciano Rinaldi y sé muy bien lo que significa construir un
@@ -224,9 +242,8 @@
 
           <div class="sobre-mi__grid">
             <div class="sobre-mi__media">
-              <!-- PLACEHOLDER (imagen de stock, Pexels): reemplazar por foto real de Luciano -->
-              <figure class="media-frame media-frame--portrait">
-                <img src="assets/luciano-portrait.jpg" alt="Retrato de Luciano Rinaldi" class="img-cover" loading="lazy" />
+              <figure class="media-frame media-frame--portrait" data-reveal="img">
+                <img src="assets/luciano-1.jpg" alt="Retrato de Luciano Rinaldi sonriendo en su consultorio" class="img-cover" loading="lazy" style="object-position: 58% 45%" />
               </figure>
             </div>
             <div class="sobre-mi__body">
@@ -369,8 +386,28 @@
         </div>
       </section>
 
+      <!-- ===================== EL ESPACIO (fotos) ===================== -->
+      <section class="espacio section--cream">
+        <div class="container">
+          <div class="sec-head sec-head--center">
+            <p class="script-accent">Un espacio para ti</p>
+            <h2 class="sec-title">Escucha atenta, sin apuros</h2>
+          </div>
+          <div class="espacio__grid">
+            <figure class="espacio__item espacio__item--tall" data-reveal="img">
+              <div class="espacio__img"><img src="assets/luciano-2.jpg" alt="Luciano Rinaldi tomando notas en su cuaderno" class="img-cover" loading="lazy" data-parallax="0.06" /></div>
+              <figcaption>Cada historia merece ser pensada con tiempo.</figcaption>
+            </figure>
+            <figure class="espacio__item espacio__item--wide" data-reveal="img">
+              <div class="espacio__img"><img src="assets/luciano-4.jpg" alt="Luciano Rinaldi conversando con un consultante en su consultorio" class="img-cover" loading="lazy" data-parallax="0.06" /></div>
+              <figcaption>Un vínculo de confianza es el punto de partida.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <!-- ===================== CONFIANZA / CONEXIÓN ONLINE ===================== -->
-      <section class="confianza section--cream" id="confianza">
+      <section class="confianza" id="confianza">
         <div class="container">
           <div class="sec-head sec-head--left">
             <span class="sec-num">05</span>
@@ -514,8 +551,53 @@
         <p class="footer-legal">
           © <span id="year"></span> Luciano Rinaldi. Todos los derechos reservados.
         </p>
+        <p class="footer-legal">
+          <button type="button" class="footer-cookies" id="openCookies">Preferencias de cookies</button>
+        </p>
       </div>
     </footer>
+
+    <!-- ===================== WHATSAPP FLOTANTE (botones rápidos) ===================== -->
+    <div class="wa-float" id="waFloat">
+      <div class="wa-float__menu" id="waMenu" aria-label="Mensajes rápidos por WhatsApp">
+        <p class="wa-float__title">¿En qué te puedo ayudar?</p>
+        <a class="wa-quick" data-wa-msg="Hola Luciano, quiero reservar una sesión inicial." target="_blank" rel="noopener">Quiero reservar una sesión</a>
+        <a class="wa-quick" data-wa-msg="Hola Luciano, quisiera saber cómo funciona la terapia online y qué horarios tienes disponibles." target="_blank" rel="noopener">¿Cómo funciona la terapia online?</a>
+        <a class="wa-quick" data-wa-msg="Hola Luciano, quisiera consultar por los honorarios." target="_blank" rel="noopener">Consultar honorarios</a>
+        <a class="wa-quick" data-wa-msg="Hola Luciano, quisiera consultar por atención para mi hijo/a." target="_blank" rel="noopener">Infancias y adolescencias</a>
+      </div>
+      <span class="wa-float__hint" id="waHint">¿Hablamos?</span>
+      <button class="wa-float__btn" id="waToggle" aria-expanded="false" aria-controls="waMenu" aria-label="Abrir mensajes rápidos de WhatsApp">
+        <svg class="wa-float__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3-.8-2.6-1.1-4.2-3.8-4.3-4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5c-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.4.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+        <svg class="wa-float__close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </button>
+    </div>
+
+    <button class="to-top" id="toTop" aria-label="Volver arriba">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+    </button>
+
+    <!-- ===================== COOKIES ===================== -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Aviso de cookies" hidden>
+      <div class="cookie-banner__head">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5h.01M16 15.5h.01M12 12h.01M11 17h.01M7 14h.01"/></svg>
+        <p class="cookie-banner__title">Tu privacidad importa</p>
+      </div>
+      <p class="cookie-banner__text">
+        Uso cookies propias para que el sitio funcione correctamente y, si lo
+        aceptas, cookies de análisis para mejorar tu experiencia. Puedes elegir
+        qué aceptar.
+      </p>
+      <div class="cookie-banner__prefs" id="cookiePrefs" hidden>
+        <label class="cookie-opt"><input type="checkbox" checked disabled /> <span>Necesarias <small>(siempre activas)</small></span></label>
+        <label class="cookie-opt"><input type="checkbox" id="cookieAnalytics" /> <span>Análisis y mejora del sitio</span></label>
+      </div>
+      <div class="cookie-banner__actions">
+        <button type="button" class="btn btn--primary btn--sm" data-cookie="all">Aceptar todas</button>
+        <button type="button" class="btn btn--ghost btn--sm" data-cookie="necessary">Solo necesarias</button>
+        <button type="button" class="cookie-banner__link" id="cookieConfig" aria-expanded="false" aria-controls="cookiePrefs">Configurar</button>
+      </div>
+    </div>
 
     <!-- ===================== TEMPORAL · SWITCHER DE COLORES =====================
          Previsualización de paletas. ELIMINAR este bloque (y el CSS marcado
