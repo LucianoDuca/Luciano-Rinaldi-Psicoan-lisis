@@ -211,24 +211,31 @@ document
   .querySelectorAll(".script-accent:not(.hero-inner *), .nav-panel__accent")
   .forEach((el) => el.classList.add("reveal-write"));
 
-const observed = document.querySelectorAll(
-  ".reveal, .split:not(.hero *), .reveal-write:not(.hero *), [data-reveal]:not(.hero *), .sec-title--rule"
-);
-if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          io.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15, rootMargin: "0px 0px -6% 0px" }
-  );
-  observed.forEach((el) => io.observe(el));
-} else {
-  observed.forEach((el) => el.classList.add("in"));
+// Se revisa la posición con getBoundingClientRect (y no con IntersectionObserver)
+// porque los elementos que arrancan recortados con clip-path —video, fotos y
+// textos manuscritos— nunca cuentan como "visibles" para el observer.
+let pendingReveal = [
+  ...document.querySelectorAll(
+    ".reveal, .split:not(.hero *), .reveal-write:not(.hero *), [data-reveal]:not(.hero *), .sec-title--rule"
+  ),
+];
+function checkReveals() {
+  if (!pendingReveal.length) return;
+  const limit = window.innerHeight * 0.92;
+  pendingReveal = pendingReveal.filter((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.width === 0 && r.height === 0) return true; // oculto (p. ej. menú cerrado)
+    if (r.top < limit && r.bottom > 0) {
+      el.classList.add("in");
+      return false;
+    }
+    // Si ya quedó arriba (salto directo a un ancla), mostrarlo igual
+    if (r.bottom <= 0) {
+      el.classList.add("in");
+      return false;
+    }
+    return true;
+  });
 }
 
 // ===================== SCROLL: progreso, header, parallax, volver arriba =====================
@@ -241,6 +248,7 @@ function onScroll() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
   if (progress) progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
   siteHeader.classList.toggle("scrolled", y > 40);
+  checkReveals();
   toTop?.classList.toggle("show", y > window.innerHeight * 1.2);
   if (!reduceMotion) {
     const vh = window.innerHeight;
@@ -265,6 +273,7 @@ window.addEventListener(
   { passive: true }
 );
 onScroll();
+window.addEventListener("resize", onScroll);
 toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
 // ===================== VIDEO DE BIENVENIDA =====================
