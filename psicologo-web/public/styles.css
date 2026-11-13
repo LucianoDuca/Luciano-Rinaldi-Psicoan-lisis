@@ -954,9 +954,6 @@ section {
 .footer-brand__mark {
   width: clamp(60px, 12vw, 84px);
   height: auto;
-  opacity: 0.75;
-  /* El PNG es negro: lo llevamos al tono madera de la paleta */
-  filter: sepia(0.6) saturate(0.9) brightness(1.15);
 }
 .footer-brand__rule {
   align-self: stretch;
@@ -1034,8 +1031,17 @@ section {
 }
 
 @media (min-width: 900px) {
-  .sobre-mi__grid {
-    grid-template-columns: 1.1fr 0.9fr;
+  .sobre-mi__body {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+  }
+  .sobre-mi__body .script-accent {
+    margin: 0;
+  }
+  .sobre-mi__body p {
+    margin: 0;
   }
   .contacto-inner {
     grid-template-columns: 0.8fr 1.2fr;
@@ -2045,4 +2051,83 @@ body.cookie-open .to-top {
   .concept h3 {
     margin-bottom: 0.5rem;
   }
+}
+
+/* ---------- Links de secciones en el header (PC) ---------- */
+.header-links {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .header-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.1rem, 2vw, 2rem);
+    margin-left: auto;
+  }
+  .header-links a:not(.btn) {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tinta-80);
+    padding: 0.4rem 0;
+    position: relative;
+    transition: color 0.25s ease;
+  }
+  .header-links a:not(.btn)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s var(--ease-out);
+  }
+  .header-links a:not(.btn):hover {
+    color: var(--tinta);
+  }
+  .header-links a:not(.btn):hover::after {
+    transform: scaleX(1);
+  }
+  .nav-toggle {
+    display: none;
+  }
+}
+.header-links__cta {
+  display: none !important;
+}
+@media (min-width: 1280px) {
+  .header-links__cta {
+    display: inline-flex !important;
+    margin-left: 0.6rem;
+  }
+}
+
+/* ---------- Banner del consultorio en "Sobre mí" ---------- */
+.sobre-mi__banner {
+  aspect-ratio: 16 / 9;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+.sobre-mi__banner img {
+  object-position: 55% 50%;
+}
+@media (min-width: 680px) {
+  .sobre-mi__banner {
+    aspect-ratio: 1600 / 550;
+  }
+}
+
+/* ---------- Banderas de los países de estudio ---------- */
+.flag {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  margin-right: 0.45em;
+  vertical-align: -1px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(58, 45, 34, 0.12);
 }
