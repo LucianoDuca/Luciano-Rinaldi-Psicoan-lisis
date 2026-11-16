@@ -51,9 +51,17 @@ app.get("/sitemap.xml", async (req, res) => {
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
       `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
       `  <url><loc>${SITE_URL}/</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>\n` +
+      `  <url><loc>${SITE_URL}/privacidad</loc><lastmod>${lastmod}</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>\n` +
       `</urlset>\n`
   );
 });
+
+// ---------- Página de privacidad (URL limpia) ----------
+app.get("/privacidad", (req, res) => {
+  res.setHeader("Cache-Control", "no-cache");
+  res.sendFile(path.join(__dirname, "public", "privacidad.html"));
+});
+app.get("/privacidad.html", (req, res) => res.redirect(301, "/privacidad"));
 
 // ---------- Archivos estáticos ----------
 app.use(

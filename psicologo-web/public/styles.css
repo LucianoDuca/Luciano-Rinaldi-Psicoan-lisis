@@ -613,20 +613,16 @@ section {
   background: var(--crema);
 }
 .formacion__logo {
-  width: 72px;
-  height: 72px;
+  height: 96px;
   margin: 0 auto 1.3rem;
-  border-radius: 50%;
-  border: 1px solid var(--linea-fuerte);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.formacion__logo span {
-  font-family: var(--serif);
-  font-weight: 500;
-  color: var(--tinta);
-  letter-spacing: 0.08em;
-  font-size: 1.05rem;
+.formacion__logo img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
 }
 .formacion__item h3 {
   font-size: 1.4rem;
@@ -2130,4 +2126,81 @@ body.cookie-open .to-top {
   vertical-align: -1px;
   border-radius: 2px;
   box-shadow: 0 0 0 1px rgba(58, 45, 34, 0.12);
+}
+
+/* ---------- Página legal (política de privacidad) ---------- */
+.legal-back {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tinta-80);
+}
+.legal-back:hover {
+  color: var(--tinta);
+}
+.legal {
+  padding: clamp(3rem, 7vw, 5rem) 0 clamp(4rem, 8vw, 6rem);
+}
+.legal__inner {
+  max-width: 760px;
+}
+.legal__title {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 300;
+  margin-bottom: 0.4rem;
+}
+.legal__updated {
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+  margin-bottom: 2rem;
+}
+.legal__lead {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2.6vw, 1.5rem);
+  line-height: 1.45;
+  color: var(--tinta);
+  margin-bottom: 2.4rem;
+}
+.legal h2 {
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  font-weight: 400;
+  margin: 2.4rem 0 0.8rem;
+}
+.legal ul {
+  padding-left: 1.2rem;
+  margin: 0 0 1.1rem;
+  color: var(--tinta-80);
+}
+.legal li {
+  margin-bottom: 0.6rem;
+}
+.legal a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legal__note {
+  font-size: 0.86rem;
+  color: var(--tinta-suave);
+  border-left: 2px solid var(--linea-fuerte);
+  padding-left: 1rem;
+}
+.legal__alert {
+  background: var(--crema);
+  border-left: 3px solid var(--tinta-suave);
+  padding: 1.1rem 1.3rem;
+}
+.form__legal {
+  margin: 0.9rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--tinta-suave);
+  text-align: center;
+}
+.form__legal a,
+.cookie-banner__text a,
+.footer-legal a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: inherit;
 }
