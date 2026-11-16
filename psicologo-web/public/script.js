@@ -59,11 +59,41 @@ const form = document.getElementById("contactForm");
 const status = document.getElementById("formStatus");
 const submitBtn = document.getElementById("submitBtn");
 
+// Token anti-bot: se pide al cargar la página y se envía con el formulario.
+let formToken = null;
+async function loadFormToken() {
+  try {
+    const res = await fetch("/api/form-token", { cache: "no-store" });
+    if (res.ok) formToken = (await res.json()).token;
+  } catch {
+    formToken = null;
+  }
+}
+
+const setStatus = (type, text) => {
+  status.className = `form__status${type ? ` ${type}` : ""}`;
+  status.textContent = text;
+};
+
+async function postContact(data) {
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...data, token: formToken }),
+  });
+  let json = {};
+  try {
+    json = await res.json();
+  } catch {}
+  return { res, json };
+}
+
 if (form) {
+  loadFormToken();
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    status.className = "form__status";
-    status.textContent = "";
+    setStatus("", "");
 
     const data = {
       nombre: form.nombre.value.trim(),
@@ -73,8 +103,11 @@ if (form) {
     };
 
     if (!data.nombre || !data.whatsapp || !data.mensaje) {
-      status.className = "form__status error";
-      status.textContent = "Por favor completá todos los campos.";
+      setStatus("error", "Por favor completa todos los campos.");
+      return;
+    }
+    if (!/^[+\d\s().-]{7,30}$/.test(data.whatsapp)) {
+      setStatus("error", "Revisa el número de WhatsApp (solo números, espacios y +).");
       return;
     }
 
@@ -83,27 +116,29 @@ if (form) {
     submitBtn.textContent = "Enviando…";
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json();
+      if (!formToken) await loadFormToken();
+      let { res, json } = await postContact(data);
+
+      // Token vencido (por ejemplo, la pestaña quedó abierta varios días):
+      // se pide uno nuevo y se reintenta una vez.
+      if (json.retry) {
+        await loadFormToken();
+        await new Promise((r) => setTimeout(r, 3200));
+        ({ res, json } = await postContact(data));
+      }
 
       if (res.ok && json.ok) {
         form.reset();
-        status.className = "form__status ok";
-        status.textContent =
-          "¡Gracias! Tu consulta fue enviada. Luciano te responderá a la brevedad.";
+        setStatus("ok", "¡Gracias! Tu consulta fue enviada. Luciano te responderá a la brevedad.");
+        loadFormToken();
       } else {
-        status.className = "form__status error";
-        status.textContent =
-          json.error || "No se pudo enviar. Prueba de nuevo o escribe por WhatsApp.";
+        setStatus(
+          "error",
+          json.error || "No se pudo enviar. Prueba de nuevo o escribe por WhatsApp."
+        );
       }
     } catch (err) {
-      status.className = "form__status error";
-      status.textContent =
-        "Hubo un problema de conexión. Prueba de nuevo o escribe por WhatsApp.";
+      setStatus("error", "Hubo un problema de conexión. Prueba de nuevo o escribe por WhatsApp.");
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = originalText;

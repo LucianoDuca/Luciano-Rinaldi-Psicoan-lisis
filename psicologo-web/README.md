@@ -37,16 +37,28 @@ npm run dev
 
 ## Formulario de contacto
 
-- El endpoint `POST /api/contact` valida los datos y **siempre** guarda la consulta en
-  `data/submissions.json`.
-- Si completás las credenciales SMTP en `.env`, además envía un email a Luciano con
-  cada consulta. Sin SMTP, el sitio funciona igual (solo guarda en el archivo).
+- `POST /api/contact` valida los datos, guarda la consulta en `data/submissions.json`
+  y, si hay credenciales, la envía por email con **Resend** (API HTTPS: funciona en
+  Render Free, que bloquea SMTP).
+- Variables (ver `.env.example`): `RESEND_API_KEY`, `CONTACT_TO`, opcional `CONTACT_FROM`.
+  Sin dominio verificado en Resend, `CONTACT_TO` debe ser el email de la cuenta de Resend.
 
-Para activar el email, copiá `.env.example` a `.env` y completá:
+### Protección anti-bot (`lib/antispam.js`)
 
-```
-SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_TO
-```
+1. Token firmado (HMAC) que la página pide en `GET /api/form-token` al cargar.
+2. Trampa de tiempo: envíos en menos de 3 s se descartan; el token vence a las 24 h.
+3. Honeypot (campo oculto `website`).
+4. Límite por IP (solo envíos válidos): 5 cada 10 min y 10 por día.
+5. Filtros: links o HTML en el mensaje, formato del WhatsApp, duplicados.
+6. Solo se aceptan envíos desde el mismo origen (cabecera Origin/Referer).
+
+A los bots detectados se les responde "ok" para que no reintenten.
+
+### Seguridad (`lib/security.js`)
+
+Content-Security-Policy, HSTS (en producción), X-Frame-Options, nosniff,
+Referrer-Policy, Permissions-Policy, límite de 10 KB en el cuerpo de las peticiones
+y manejo de errores sin exponer detalles internos.
 
 ## Pendientes para reemplazar (placeholders)
 
@@ -73,6 +85,7 @@ propuesta de la IA con lo que el propio Luciano pidió poner en la página.
 
 ## Deploy
 
-Al ser Node + Express, se despliega en cualquier hosting con Node (Render, Railway,
-Fly.io, un VPS, etc.). El `data/submissions.json` necesita almacenamiento persistente;
-si el hosting es efímero, conviene activar el envío por email vía SMTP.
+Publicado en Render (Web Service, plan Free): Root Directory `psicologo-web`,
+build `npm install`, start `npm start`. Cada push a `main` se publica solo.
+En Render Free el disco es efímero: activar Resend para no perder consultas.
+Definir `NODE_ENV=production` para activar HSTS.
