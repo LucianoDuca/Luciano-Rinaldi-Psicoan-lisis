@@ -764,66 +764,75 @@ section {
 .diamante {
   margin: 0 auto;
   width: 100%;
-  max-width: 440px;
+  max-width: 460px;
+  animation: diamante-flota 7s ease-in-out infinite;
 }
 .diamante__svg {
   display: block;
   width: 100%;
   height: auto;
   overflow: visible;
-  cursor: grab;
-  /* En celular el desplazamiento vertical sigue moviendo la página;
-     el gesto horizontal gira el diamante */
-  touch-action: pan-y;
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
   filter: drop-shadow(0 18px 30px rgba(140, 122, 102, 0.22));
-  animation: diamante-flota 7s ease-in-out infinite;
 }
-.diamante__svg:focus { outline: none; }
-.diamante__svg:focus-visible {
-  outline: 1px solid var(--tinta-suave);
-  outline-offset: 8px;
-  border-radius: 50%;
-}
-.diamante.is-dragging .diamante__svg { cursor: grabbing; }
-.diamante__svg polygon {
-  stroke: rgba(140, 122, 102, 0.6);
-  stroke-width: 0.9;
+.diamante__cara {
+  fill: url(#diamanteHolo);
+  stroke: var(--tinta-suave);
+  stroke-width: 1;
   stroke-linejoin: round;
+  transition: fill-opacity 0.4s ease;
 }
-.diamante__frente polygon { fill-opacity: 0.88; }
+/* Cada cara con su propio tono de luz, para que se lea como facetado */
+.diamante__cara:nth-child(1) { fill-opacity: 0.95; }
+.diamante__cara:nth-child(2) { fill-opacity: 0.7; }
+.diamante__cara:nth-child(3) { fill-opacity: 0.55; }
+.diamante__cara:nth-child(4) { fill-opacity: 0.8; }
+.diamante__cara:nth-child(5) { fill-opacity: 1; }
+.diamante__cara:nth-child(6) { fill-opacity: 0.85; }
+.diamante__cara:nth-child(7) { fill-opacity: 0.6; }
+.diamante__cara:nth-child(8) { fill-opacity: 0.9; }
+.diamante__cara:nth-child(9) { fill-opacity: 0.7; }
+.diamante__cara:hover {
+  fill-opacity: 0.3;
+}
+.diamante__brillo {
+  animation: diamante-brillo 6s ease-in-out infinite;
+  transform: skewX(-18deg);
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
 .diamante__palabras {
   pointer-events: none;
   text-anchor: middle;
-  dominant-baseline: central;
   font-family: var(--serif);
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 500;
   fill: var(--tinta);
 }
 .diamante__palabras .diamante__yo {
   font-family: var(--script);
+  font-size: 44px;
   font-weight: 400;
 }
-.diamante__ayuda {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 0.4rem;
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--tinta-suave);
+@media (max-width: 679px) {
+  /* En celular el diamante se achica: palabras un poco más grandes */
+  .diamante__palabras {
+    font-size: 20px;
+    font-weight: 600;
+  }
 }
 @keyframes diamante-flota {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
+@keyframes diamante-brillo {
+  0% { transform: translateX(0) skewX(-18deg); }
+  55%, 100% { transform: translateX(820px) skewX(-18deg); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .diamante__svg { animation: none; }
+  .diamante,
+  .diamante__brillo {
+    animation: none;
+  }
 }
 
 /* ===================== ATENCIÓN / ETAPAS ===================== */
