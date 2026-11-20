@@ -238,7 +238,6 @@ addReveal(".formacion__item", null, 3);
 addReveal(".concept", null, 3);
 addReveal(".etapa", "reveal--scale", 2);
 addReveal(".trust", "reveal--left");
-addReveal(".pasos__list > li", null, 3);
 addReveal(".sobre-mi__body", "reveal--right");
 addReveal(".honorarios, .contacto-aside, .form, .frase-foto__quote, .footer-inner, .espacio__item figcaption, .pull-quote__sign");
 document

@@ -367,7 +367,14 @@ section {
 }
 .hero-figure__name {
   text-align: center;
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.5rem;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 4.6vw, 1.9rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-80);
+  line-height: 1.2;
 }
 .hero-figure__cred {
   text-align: center;
@@ -668,6 +675,9 @@ section {
   height: 100%;
   width: auto;
   object-fit: contain;
+  /* Escudos en un solo tono madera-gris, no en sus colores originales */
+  filter: grayscale(1) sepia(0.8) saturate(0.75) brightness(1.05) contrast(0.88);
+  opacity: 0.85;
 }
 .formacion__item h3 {
   font-size: 1.4rem;
@@ -795,6 +805,15 @@ section {
 .trust:last-child {
   border-bottom: 1px solid var(--linea);
 }
+.trust__icon {
+  display: inline-flex;
+  color: var(--tinta-suave);
+  margin-bottom: 0.9rem;
+}
+.trust__icon svg {
+  width: 2.1rem;
+  height: 2.1rem;
+}
 .trust h3 {
   font-size: 1.5rem;
   font-weight: 400;
@@ -817,56 +836,10 @@ section {
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.trust__brand--center {
-  display: flex;
-  justify-content: center;
-}
 .brand-logo {
   width: 2.1rem;
   height: auto;
   flex: none;
-}
-.pasos {
-  text-align: center;
-}
-.pasos__list {
-  display: grid;
-  gap: clamp(2rem, 5vw, 3rem);
-  grid-template-columns: 1fr;
-  margin: 1.5rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-.pasos__step {
-  font-family: var(--serif);
-  font-size: 2.2rem;
-  color: var(--tinta-suave);
-  display: block;
-  margin-bottom: 0.4rem;
-}
-.pasos__list h3 {
-  font-size: 1.4rem;
-  font-weight: 400;
-  margin-bottom: 0.4rem;
-}
-.pasos__list p {
-  margin: 0;
-  font-size: 0.98rem;
-}
-.honorarios {
-  text-align: center;
-  margin-top: clamp(3rem, 7vw, 5rem);
-  padding-top: clamp(2.5rem, 6vw, 3.5rem);
-  border-top: 1px solid var(--linea);
-}
-.honorarios h3 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-}
-.honorarios p {
-  margin: 0 auto;
-  max-width: 60ch;
 }
 
 /* ===================== CONTACTO ===================== */
@@ -1050,13 +1023,12 @@ section {
     grid-template-columns: repeat(3, 1fr);
   }
   .concept-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 920px;
+    margin: 0 auto;
   }
   .etapas {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .pasos__list {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1320,12 +1292,10 @@ body.is-ready .hero .split .w > span {
   clip-path: inset(-0.2em -0.2em -0.3em -0.2em);
 }
 .sec-head--center .script-accent.reveal-write,
-.pasos .script-accent.reveal-write,
 .hero-figure .script-accent.reveal-write {
   clip-path: inset(-0.2em 50% -0.3em 50%);
 }
 .sec-head--center .script-accent.reveal-write.in,
-.pasos .script-accent.reveal-write.in,
 .hero-figure .script-accent.reveal-write.in {
   clip-path: inset(-0.2em -0.2em -0.3em -0.2em);
 }
@@ -1881,72 +1851,20 @@ body.cookie-open .to-top {
     width: 100%;
     justify-content: center;
   }
-  /* Paso a paso como línea de tiempo vertical */
-  .pasos__list {
-    gap: 0;
-    text-align: left;
-    max-width: 30rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .pasos__list li {
-    position: relative;
-    display: grid;
-    grid-template-columns: 3rem 1fr;
-    column-gap: 1.1rem;
-    padding-bottom: 2.2rem;
-  }
-  .pasos__list li:last-child {
-    padding-bottom: 0;
-  }
-  .pasos__list li::before {
-    content: "";
-    position: absolute;
-    left: 1.5rem;
-    top: 2.9rem;
-    bottom: 0.6rem;
-    width: 1px;
-    background: var(--linea-fuerte);
-  }
-  .pasos__list li:last-child::before {
-    display: none;
-  }
-  .pasos__step {
-    grid-row: span 2;
-    margin: 0;
-    font-size: 1.9rem;
-    line-height: 1.3;
-    text-align: center;
-  }
 }
 
 /* ---------- TABLET Y PC ---------- */
 @media (min-width: 800px) {
-  /* Conexión online: tres columnas con divisores */
+  /* Conexión online: dos columnas; a la derecha Google Meet y debajo ARQ */
   .trust-grid {
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--linea);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    grid-auto-flow: column;
+    column-gap: clamp(2.5rem, 6vw, 5rem);
+  }
+  .trust:nth-child(2),
+  .trust:last-child {
     border-bottom: 1px solid var(--linea);
-  }
-  .trust,
-  .trust:last-child {
-    display: flex;
-    flex-direction: column;
-    padding: 2.4rem 2rem;
-    border: 0;
-  }
-  .trust:first-child {
-    padding-left: 0;
-  }
-  .trust:last-child {
-    padding-right: 0;
-  }
-  .trust + .trust {
-    border-left: 1px solid var(--linea);
-  }
-  .trust .trust__brand {
-    order: 3;
-    margin: 1.4rem 0 0;
   }
 }
 
@@ -2024,7 +1942,7 @@ body.cookie-open .to-top {
 .header-links {
   display: none;
 }
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   .header-links {
     display: flex;
     align-items: center;

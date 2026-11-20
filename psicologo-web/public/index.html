@@ -170,7 +170,7 @@
         </div>
 
         <div class="hero-figure">
-          <p class="hero-figure__name script-accent">Soy Luciano Rinaldi</p>
+          <p class="hero-figure__name">Soy Luciano Rinaldi</p>
           <p class="hero-figure__cred eyebrow">
             Lic. en Psicología · MP 1483
           </p>
@@ -409,15 +409,6 @@
                 quiénes somos.
               </p>
             </article>
-            <article class="concept">
-              <span class="concept__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></span>
-              <h3>No busco encasillarte</h3>
-              <p>
-                En vez de un diagnóstico que te etiquete, abrimos un espacio de
-                pensamiento para comprender por qué duele lo que duele hoy y qué
-                patrones estás repitiendo en tus relaciones.
-              </p>
-            </article>
           </div>
         </div>
       </section>
@@ -474,7 +465,7 @@
               <figcaption>Cada historia merece ser pensada con tiempo.</figcaption>
             </figure>
             <figure class="espacio__item espacio__item--wide" data-reveal="img">
-              <div class="espacio__img"><img src="assets/luciano-4.jpg" alt="Luciano Rinaldi conversando con un consultante en su consultorio" class="img-cover" loading="lazy" data-parallax="0.06" width="1600" height="1200" /></div>
+              <div class="espacio__img"><img src="assets/luciano-consulta.jpg" alt="Luciano Rinaldi conversando con un consultante en su consultorio" class="img-cover" loading="lazy" data-parallax="0.06" width="1093" height="820" /></div>
               <figcaption>Un vínculo de confianza es el punto de partida.</figcaption>
             </figure>
           </div>
@@ -491,6 +482,7 @@
 
           <div class="trust-grid">
             <div class="trust">
+              <span class="trust__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></span>
               <h3>Flexibilidad horaria</h3>
               <p>
                 El encuadre online se adapta a tus horarios: puedes coordinar antes o
@@ -498,6 +490,7 @@
               </p>
             </div>
             <div class="trust">
+              <span class="trust__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2"/></svg></span>
               <h3>Confidencialidad</h3>
               <p>
                 Mi espacio cumple con estrictos estándares de privacidad ética y
@@ -512,43 +505,14 @@
                 profesional confiable.
               </p>
             </div>
-          </div>
-
-          <div class="pasos">
-            <p class="script-accent">Paso a paso</p>
-            <ol class="pasos__list">
-              <li>
-                <span class="pasos__step">01</span>
-                <h3>Primer contacto</h3>
-                <p>
-                  Me escribes por WhatsApp o completas el formulario, donde me cuentas
-                  tu motivo de consulta.
-                </p>
-              </li>
-              <li>
-                <span class="pasos__step">02</span>
-                <h3>Entrevista inicial</h3>
-                <p>
-                  Acordamos un día y horario para vernos y conocernos.
-                </p>
-              </li>
-              <li>
-                <span class="pasos__step">03</span>
-                <h3>Inicio del proceso</h3>
-                <p>
-                  Tenemos las sesiones semanales online de la etapa diagnóstica.
-                </p>
-              </li>
-            </ol>
-          </div>
-
-          <div class="honorarios">
-            <span class="trust__brand trust__brand--center" aria-label="ARQ"><svg class="brand-logo" viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="10" fill="currentColor" opacity=".9"/><path d="M12 29 20 11l8 18M15.2 22h9.6" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>ARQ</span></span>
-            <h3>Honorarios</h3>
-            <p>
-              Los honorarios se envían a través de una aplicación segura y sin
-              comisiones: ARQ (DollarApp).
-            </p>
+            <div class="trust">
+              <span class="trust__brand" aria-label="ARQ"><svg class="brand-logo" viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="10" fill="currentColor" opacity=".9"/><path d="M12 29 20 11l8 18M15.2 22h9.6" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>ARQ</span></span>
+              <h3>Honorarios</h3>
+              <p>
+                Los honorarios se envían a través de una aplicación segura y sin
+                comisiones: ARQ (DollarApp).
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -595,7 +559,7 @@
               </div>
               <div class="form__row">
                 <label for="mensaje">¿Qué estás buscando?</label>
-                <textarea id="mensaje" name="mensaje" required minlength="10" maxlength="2000" rows="4"></textarea>
+                <textarea id="mensaje" name="mensaje" required maxlength="2000" rows="4"></textarea>
               </div>
               <div class="form__hp" aria-hidden="true">
                 <label for="website">No completar</label>

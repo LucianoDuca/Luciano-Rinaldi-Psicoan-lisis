@@ -103,9 +103,6 @@ export function validateContact(body) {
   if (digits < 7 || digits > 15) {
     return { error: "Revisa el número de WhatsApp (con código de país)." };
   }
-  if (mensaje.length < 10) {
-    return { error: "Cuéntame un poco más en el mensaje." };
-  }
   if (mensaje.length > 2000) {
     return { error: "El mensaje es demasiado largo (máximo 2000 caracteres)." };
   }
