@@ -19,14 +19,9 @@ dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 3000;
-// URL pública del sitio (para canonical, sitemap y robots). Cambiarla si se
-// conecta un dominio propio.
-// En Vercel, si no se define SITE_URL, se usa la URL de producción del proyecto.
-const SITE_URL = (
-  process.env.SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
-  "https://luciano-rinaldi.vercel.app"
-).replace(/\/$/, "");
+// URL pública del sitio (para canonical, sitemap y robots): el dominio propio.
+// Se puede cambiar con la variable SITE_URL.
+const SITE_URL = (process.env.SITE_URL || "https://www.lucianorinaldi.com").replace(/\/$/, "");
 
 // En Vercel el disco es de solo lectura salvo /tmp (y se borra): ahí la copia
 // local es solo un respaldo; las consultas llegan por email.
