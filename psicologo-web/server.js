@@ -25,7 +25,7 @@ const PORT = process.env.PORT || 3000;
 const SITE_URL = (
   process.env.SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
-  "https://luciano-rinaldi.onrender.com"
+  "https://luciano-rinaldi.vercel.app"
 ).replace(/\/$/, "");
 
 // En Vercel el disco es de solo lectura salvo /tmp (y se borra): ahí la copia
