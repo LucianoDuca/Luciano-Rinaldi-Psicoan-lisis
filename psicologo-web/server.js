@@ -21,9 +21,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 // URL pública del sitio (para canonical, sitemap y robots). Cambiarla si se
 // conecta un dominio propio.
-const SITE_URL = (process.env.SITE_URL || "https://luciano-rinaldi.onrender.com").replace(/\/$/, "");
+// En Vercel, si no se define SITE_URL, se usa la URL de producción del proyecto.
+const SITE_URL = (
+  process.env.SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
+  "https://luciano-rinaldi.onrender.com"
+).replace(/\/$/, "");
 
-const DATA_DIR = path.join(__dirname, "data");
+// En Vercel el disco es de solo lectura salvo /tmp (y se borra): ahí la copia
+// local es solo un respaldo; las consultas llegan por email.
+const DATA_DIR = process.env.VERCEL ? "/tmp/data" : path.join(__dirname, "data");
 const SUBMISSIONS_FILE = path.join(DATA_DIR, "submissions.json");
 
 // Render (y casi cualquier hosting) pone un proxy delante: confiamos en el
@@ -188,7 +195,10 @@ app.use((err, req, res, next) => {
   res.status(500).json({ ok: false, error: "Error del servidor. Intenta de nuevo." });
 });
 
-app.listen(PORT, () => {
+// Vercel usa la app exportada como función; en Render o local, escucha en un puerto.
+export default app;
+
+if (!process.env.VERCEL) app.listen(PORT, () => {
   console.log(`Servidor en http://localhost:${PORT}`);
   console.log(
     emailEnabled()
