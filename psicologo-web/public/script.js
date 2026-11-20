@@ -423,3 +423,6 @@ cookieConfig?.addEventListener("click", () => {
 });
 document.getElementById("openCookies")?.addEventListener("click", () => showCookieBanner(true));
 window.addEventListener("resize", syncCookieOffset);
+
+// Diamante: sin movimiento del tornasolado si se pidió reducir animaciones
+if (reduceMotion) document.querySelector(".diamante__svg")?.pauseAnimations?.();
