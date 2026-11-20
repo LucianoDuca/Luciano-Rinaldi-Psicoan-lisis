@@ -240,7 +240,7 @@ addReveal(".etapa", "reveal--scale", 2);
 addReveal(".trust", "reveal--left");
 addReveal(".pasos__list > li", null, 3);
 addReveal(".sobre-mi__body", "reveal--right");
-addReveal(".honorarios, .contacto-aside, .form, .vincular-illustration, .footer-inner, .espacio__item figcaption, .pull-quote__sign");
+addReveal(".honorarios, .contacto-aside, .form, .frase-foto__quote, .footer-inner, .espacio__item figcaption, .pull-quote__sign");
 document
   .querySelectorAll(".script-accent:not(.hero-inner *), .nav-panel__accent")
   .forEach((el) => el.classList.add("reveal-write"));
